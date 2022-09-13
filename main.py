@@ -220,3 +220,4 @@ for i in ppl_list:
 courses = 'Python'
 print('Средняя оценка студентов за задания по теме', courses, ':', get_student_middle_grade("Python"))
 print('Средняя оценка лекторов за лекции по теме', courses, ':', get_lecturer_middle_grade("Python"))
+ 
