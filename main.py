@@ -16,8 +16,8 @@ class Student(Person):
     student_instances = []
 
     def __init__(self, name, surname, gender=None, role='Студент'):
-        Person.__init__(self, name, surname, gender)
-        self.__class__.student_instances.append(self)
+        super().__init__(name, surname, gender)
+        self.student_instances.append(self)
         self.finished_courses = []
         self.courses_in_progress = []
         self.role = role
@@ -81,8 +81,8 @@ class Mentor(Person):
     mentor_instances = []
 
     def __init__(self, name, surname, gender=None, role='Ментор'):
-        Person.__init__(self, name, surname, gender, role)
-        self.__class__.mentor_instances.append(self)
+        super().__init__(name, surname, gender, role)
+        self.mentor_instances.append(self)
         self.courses_attached = []
 
 
@@ -90,8 +90,8 @@ class Lecturer(Mentor):
     lecturer_instances = []
 
     def __init__(self, name, surname, gender=None, role='Лектор'):
-        Mentor.__init__(self, name, surname, gender, role)
-        self.__class__.lecturer_instances.append(self)
+        super().__init__(name, surname, gender, role)
+        self.lecturer_instances.append(self)
         self.grades = {}
 
     def __str__(self):
@@ -128,8 +128,8 @@ class Reviewer(Mentor):
     reviewer_instances = []
 
     def __init__(self, name, surname, gender=None, role='Ревьюер'):
-        Mentor.__init__(self, name, surname, gender, role)
-        self.__class__.reviewer_instances.append(self)
+        super().__init__(name, surname, gender, role)
+        self.reviewer_instances.append(self)
 
     def rate_hw(self, student, course, grade):
         if isinstance(student, Student) and course in self.courses_attached and course in student.courses_in_progress:
@@ -220,4 +220,3 @@ for i in ppl_list:
 courses = 'Python'
 print('Средняя оценка студентов за задания по теме', courses, ':', get_student_middle_grade("Python"))
 print('Средняя оценка лекторов за лекции по теме', courses, ':', get_lecturer_middle_grade("Python"))
- 
